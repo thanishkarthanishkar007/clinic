@@ -4,9 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+RUN apk add --no-cache maven
+
+RUN mvn clean package -DskipTests
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/devs-clinic-backend-1.0.0.jar"]
+CMD ["java","-jar","target/devs-clinic-backend-1.0.0.jar"]
